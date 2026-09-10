@@ -321,14 +321,25 @@
     flex-wrap: wrap;
     gap: 0.4rem;
   }
-  .tags span {
+  .tags .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.42rem;
     font-family: var(--mono);
     font-size: 0.72rem;
     letter-spacing: 0.03em;
     text-transform: uppercase;
-    padding: 0.28rem 0.55rem;
+    padding: 0.3rem 0.55rem;
     border: 1px solid var(--line);
     color: var(--muted);
+  }
+  .tags .tag i {
+    width: 13px;
+    height: 13px;
+    flex: none;
+    background: currentColor;
+    -webkit-mask: var(--i) center / contain no-repeat;
+    mask: var(--i) center / contain no-repeat;
   }
 
   /* ---------- skills ---------- */
@@ -430,6 +441,7 @@
       <a href="#sfeira">SFEIRA <span>01</span></a>
       <a href="#ronchin">Ronchin US <span>02</span></a>
       <a href="#carla">Carla Création <span>03</span></a>
+      <a href="#eco121">ÉCO121 <span>04</span></a>
       <a href="#competences">Compétences <span>—</span></a>
     </nav>
 
@@ -437,6 +449,7 @@
       Contact
       <a href="mailto:maxence.crespel@yahoo.fr">maxence.crespel@yahoo.fr</a>
       <a href="https://github.com/MaxenceCrespel" target="_blank" rel="noopener">github.com/MaxenceCrespel</a>
+      <a href="https://www.linkedin.com/in/maxence-crespel-a2a210234/" target="_blank" rel="noopener">linkedin.com/in/maxence-crespel</a>
     </div>
   </header>
 
@@ -444,9 +457,10 @@
     <section class="hero reveal" aria-labelledby="hero-title">
       <h1 id="hero-title">Je construis des applis web <em>de bout en bout.</em></h1>
       <p>
-        De la modélisation de la base de données au déploiement continu. Trois
-        produits livrés et en service : une plateforme pour clubs de football,
-        une PWA pour mon équipe, un site de réservation pour un salon de coiffure.
+        De la modélisation de la base de données au déploiement continu : une
+        plateforme pour clubs de football, une PWA pour mon équipe, un site de
+        réservation pour un salon — plus une expérience en agence web sur du
+        Symfony / PrestaShop.
       </p>
       <div class="hero__meta">
         <div>Stack — <span>NestJS / TypeORM</span></div>
@@ -483,9 +497,17 @@
           </p>
         </div>
         <div class="tags" aria-label="Technologies">
-          <span>NestJS</span><span>TypeORM</span><span>MySQL</span><span>MongoDB</span>
-          <span>React</span><span>Vite</span><span>Auth0</span><span>OpenAI</span>
-          <span>Docker</span><span>Kubernetes</span><span>ArgoCD</span>
+          <span class="tag"><i style="--i:url(logos/nestjs.svg)"></i>NestJS</span>
+          <span class="tag"><i style="--i:url(logos/typeorm.svg)"></i>TypeORM</span>
+          <span class="tag"><i style="--i:url(logos/mysql.svg)"></i>MySQL</span>
+          <span class="tag"><i style="--i:url(logos/mongodb.svg)"></i>MongoDB</span>
+          <span class="tag"><i style="--i:url(logos/react.svg)"></i>React</span>
+          <span class="tag"><i style="--i:url(logos/vite.svg)"></i>Vite</span>
+          <span class="tag"><i style="--i:url(logos/auth0.svg)"></i>Auth0</span>
+          <span class="tag"><i style="--i:url(logos/openai.svg)"></i>OpenAI</span>
+          <span class="tag"><i style="--i:url(logos/docker.svg)"></i>Docker</span>
+          <span class="tag"><i style="--i:url(logos/kubernetes.svg)"></i>Kubernetes</span>
+          <span class="tag"><i style="--i:url(logos/argo.svg)"></i>ArgoCD</span>
         </div>
       </article>
 
@@ -515,9 +537,15 @@
           </p>
         </div>
         <div class="tags" aria-label="Technologies">
-          <span>NestJS</span><span>TypeORM</span><span>PostgreSQL</span>
-          <span>React 19</span><span>Vite</span><span>PWA</span>
-          <span>Playwright</span><span>Docker</span><span>GitHub Actions</span>
+          <span class="tag"><i style="--i:url(logos/nestjs.svg)"></i>NestJS</span>
+          <span class="tag"><i style="--i:url(logos/typeorm.svg)"></i>TypeORM</span>
+          <span class="tag"><i style="--i:url(logos/postgresql.svg)"></i>PostgreSQL</span>
+          <span class="tag"><i style="--i:url(logos/react.svg)"></i>React 19</span>
+          <span class="tag"><i style="--i:url(logos/vite.svg)"></i>Vite</span>
+          <span class="tag"><i style="--i:url(logos/pwa.svg)"></i>PWA</span>
+          <span class="tag"><i style="--i:url(logos/playwright.svg)"></i>Playwright</span>
+          <span class="tag"><i style="--i:url(logos/docker.svg)"></i>Docker</span>
+          <span class="tag"><i style="--i:url(logos/githubactions.svg)"></i>GitHub Actions</span>
         </div>
       </article>
 
@@ -546,8 +574,49 @@
           </p>
         </div>
         <div class="tags" aria-label="Technologies">
-          <span>React</span><span>NestJS</span><span>TypeORM</span>
-          <span>PostgreSQL</span><span>Multer</span><span>Cypress</span><span>Docker</span>
+          <span class="tag"><i style="--i:url(logos/react.svg)"></i>React</span>
+          <span class="tag"><i style="--i:url(logos/nestjs.svg)"></i>NestJS</span>
+          <span class="tag"><i style="--i:url(logos/typeorm.svg)"></i>TypeORM</span>
+          <span class="tag"><i style="--i:url(logos/postgresql.svg)"></i>PostgreSQL</span>
+          <span class="tag">Multer</span>
+          <span class="tag"><i style="--i:url(logos/cypress.svg)"></i>Cypress</span>
+          <span class="tag"><i style="--i:url(logos/docker.svg)"></i>Docker</span>
+        </div>
+      </article>
+
+      <article class="sheet reveal" id="eco121">
+        <div class="sheet__head">
+          <h2 class="sheet__title">ÉCO121</h2>
+          <div class="sheet__index">04 / Stage</div>
+        </div>
+        <dl class="sheet__fields">
+          <div><dt>Rôle</dt><dd>Développeur full-stack (stage)</dd></div>
+          <div><dt>Période</dt><dd>Févr. – Juin 2024</dd></div>
+          <div><dt>Contexte</dt><dd>Fabien Pamelard — Armentières</dd></div>
+        </dl>
+        <div class="sheet__body">
+          <p>
+            Développement sur le site du magazine économique
+            <strong>ÉCO121</strong> (Hauts-de-France) : évolutions du
+            site éditorial et de sa partie e-commerce (abonnements, boutique).
+          </p>
+          <p>
+            Travail sur une stack PHP : <strong>Symfony</strong> et le CMS
+            <strong>Sulu</strong> pour l'éditorial, <strong>PrestaShop</strong>
+            pour la boutique, templating Twig et Smarty. Intégration
+            HTML / CSS / JavaScript.
+          </p>
+        </div>
+        <div class="tags" aria-label="Technologies">
+          <span class="tag"><i style="--i:url(logos/php.svg)"></i>PHP</span>
+          <span class="tag"><i style="--i:url(logos/symfony.svg)"></i>Symfony</span>
+          <span class="tag">Sulu</span>
+          <span class="tag"><i style="--i:url(logos/prestashop.svg)"></i>PrestaShop</span>
+          <span class="tag">Twig</span>
+          <span class="tag">Smarty</span>
+          <span class="tag"><i style="--i:url(logos/html5.svg)"></i>HTML</span>
+          <span class="tag"><i style="--i:url(logos/css.svg)"></i>CSS</span>
+          <span class="tag"><i style="--i:url(logos/javascript.svg)"></i>JavaScript</span>
         </div>
       </article>
     </section>
@@ -583,6 +652,8 @@
       <div class="note">
         Disponible — poste ou mission freelance<br>
         <a href="https://github.com/MaxenceCrespel" target="_blank" rel="noopener">github.com/MaxenceCrespel</a>
+        &nbsp;·&nbsp;
+        <a href="https://www.linkedin.com/in/maxence-crespel-a2a210234/" target="_blank" rel="noopener">linkedin.com/in/maxence-crespel</a>
       </div>
     </section>
   </main>
