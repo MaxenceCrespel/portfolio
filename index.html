@@ -1,0 +1,604 @@
+<title>Maxence Crespel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&display=swap">
+
+<style>
+  :root {
+    --paper: #E9EBE2;
+    --surface: #F1F2EC;
+    --ink: #182129;
+    --copper: #B85C29;
+    --teal: #3C7A72;
+    --line: #C4CAB9;
+    --muted: #59635C;
+    --shadow: 20 26 22;
+
+    --sans: "Big Shoulders Display", "Arial Narrow", sans-serif;
+    --serif: "Literata", Georgia, "Times New Roman", serif;
+    --mono: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+
+    --measure: 63ch;
+    --step--1: clamp(0.78rem, 0.74rem + 0.2vw, 0.86rem);
+    --step-0: clamp(1rem, 0.96rem + 0.22vw, 1.12rem);
+    --step-1: clamp(1.2rem, 1.1rem + 0.5vw, 1.5rem);
+    --step-2: clamp(1.6rem, 1.4rem + 1vw, 2.2rem);
+    --step-3: clamp(2.4rem, 1.9rem + 2.6vw, 4rem);
+    --step-4: clamp(3.4rem, 2.3rem + 5.4vw, 7.2rem);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #111820;
+      --surface: #172029;
+      --ink: #E6EADF;
+      --copper: #DE8149;
+      --teal: #68ADA3;
+      --line: #26332E;
+      --muted: #8B978C;
+      --shadow: 0 0 0;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #111820;
+    --surface: #172029;
+    --ink: #E6EADF;
+    --copper: #DE8149;
+    --teal: #68ADA3;
+    --line: #26332E;
+    --muted: #8B978C;
+    --shadow: 0 0 0;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: var(--step-0);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--sans);
+    font-weight: 800;
+    line-height: 0.94;
+    text-wrap: balance;
+    text-transform: uppercase;
+    letter-spacing: 0.005em;
+    margin: 0;
+  }
+
+  a { color: var(--copper); text-underline-offset: 0.18em; text-decoration-thickness: from-font; }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--copper);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+
+  .mono {
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* ---------- shell ---------- */
+
+  .shell {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 clamp(1.1rem, 4vw, 3rem);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2.5rem, 6vw, 5rem);
+  }
+
+  @media (min-width: 960px) {
+    .shell {
+      grid-template-columns: 15.5rem minmax(0, 1fr);
+      gap: clamp(3rem, 6vw, 6rem);
+      align-items: start;
+    }
+  }
+
+  /* ---------- title block / rail ---------- */
+
+  .rail {
+    border-top: 2px solid var(--ink);
+    padding-top: 1rem;
+  }
+
+  @media (min-width: 960px) {
+    .rail {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding-top: 2.2rem;
+      padding-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .rail__name {
+    font-size: var(--step-2);
+    letter-spacing: 0.01em;
+  }
+
+  .rail__role {
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-top: 0.7rem;
+    line-height: 1.5;
+  }
+
+  .rail__nav {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .rail__nav a {
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 0.3rem 0;
+    border-bottom: 1px solid transparent;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .rail__nav a span { color: var(--muted); }
+  .rail__nav a:hover { color: var(--copper); border-bottom-color: var(--line); }
+  .rail__nav a:hover span { color: var(--copper); }
+
+  .rail__foot {
+    margin-top: auto;
+    padding-top: 1.6rem;
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+  }
+  .rail__foot a { display: block; color: var(--ink); text-decoration: none; margin-top: 0.3rem; }
+  .rail__foot a:hover { color: var(--copper); }
+
+  /* ---------- main column ---------- */
+
+  main { min-width: 0; }
+
+  section { scroll-margin-top: 2rem; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--copper);
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin: 0 0 1.4rem;
+    line-height: 1.2;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 1.6rem;
+    height: 0;
+    border-top: 2px solid var(--copper);
+  }
+
+  /* ---------- hero ---------- */
+
+  .hero {
+    padding: clamp(2.5rem, 7vw, 5.5rem) 0 clamp(2rem, 5vw, 3.5rem);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero h1 {
+    font-size: var(--step-4);
+    font-weight: 900;
+    max-width: 14ch;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--copper);
+  }
+
+  .hero p {
+    margin: 1.8rem 0 0;
+    max-width: var(--measure);
+    font-size: var(--step-1);
+    line-height: 1.5;
+  }
+
+  .hero__meta {
+    margin-top: 2.4rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.4rem;
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+  }
+  .hero__meta span { color: var(--ink); }
+
+  /* ---------- projects ---------- */
+
+  .projects { padding-top: clamp(3rem, 7vw, 5rem); }
+
+  .sheet {
+    border: 1px solid var(--line);
+    background: var(--surface);
+    position: relative;
+    padding: clamp(1.4rem, 3.5vw, 2.6rem);
+  }
+  .sheet + .sheet { margin-top: 1.4rem; }
+
+  /* registration ticks */
+  .sheet::before, .sheet::after {
+    content: "";
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    border: 1px solid var(--copper);
+    opacity: 0.55;
+  }
+  .sheet::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
+  .sheet::after { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
+
+  .sheet__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.4rem 1.5rem;
+    padding-bottom: 1.1rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .sheet__title {
+    font-size: var(--step-2);
+    letter-spacing: 0.01em;
+  }
+
+  .sheet__index {
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    letter-spacing: 0.1em;
+    color: var(--copper);
+  }
+
+  .sheet__fields {
+    list-style: none;
+    margin: 1.2rem 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+  }
+  @media (min-width: 560px) {
+    .sheet__fields { grid-template-columns: repeat(3, 1fr); gap: 0.55rem 1.4rem; }
+  }
+
+  .sheet__fields div {
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .sheet__fields dt { color: var(--muted); }
+  .sheet__fields dd { margin: 0.15rem 0 0; color: var(--ink); }
+
+  .sheet__body {
+    margin: 1.4rem 0 0;
+    max-width: var(--measure);
+  }
+  .sheet__body p { margin: 0; }
+  .sheet__body p + p { margin-top: 0.9rem; }
+  .sheet__body strong { color: var(--copper); font-weight: 600; }
+
+  .tags {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .tags span {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    padding: 0.28rem 0.55rem;
+    border: 1px solid var(--line);
+    color: var(--muted);
+  }
+
+  /* ---------- skills ---------- */
+
+  .skills { padding-top: clamp(3.5rem, 8vw, 6rem); }
+
+  .gauge {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    gap: 0.4rem 1rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .gauge:first-of-type { border-top: 1px solid var(--line); }
+
+  .gauge__label {
+    font-family: var(--sans);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: var(--step-1);
+    letter-spacing: 0.01em;
+  }
+  .gauge__score {
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .gauge__score b { color: var(--copper); font-weight: 600; }
+
+  .gauge__track {
+    grid-column: 1 / -1;
+    height: 6px;
+    background: var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .gauge__fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: var(--v);
+    background: var(--copper);
+  }
+
+  /* ---------- contact ---------- */
+
+  .contact {
+    padding: clamp(3.5rem, 8vw, 6rem) 0 clamp(3rem, 6vw, 4.5rem);
+    margin-top: clamp(3rem, 7vw, 5rem);
+    border-top: 2px solid var(--ink);
+  }
+  .contact h2 {
+    font-size: var(--step-3);
+    font-weight: 900;
+  }
+  .contact a.big {
+    display: inline-block;
+    margin-top: 1.3rem;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: var(--step-2);
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink);
+    border-bottom: 3px solid var(--copper);
+    padding-bottom: 0.15rem;
+    transition: color 0.15s;
+  }
+  .contact a.big:hover { color: var(--copper); }
+  .contact .note {
+    margin-top: 1.6rem;
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+  }
+
+  /* ---------- load reveal ---------- */
+
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.in { opacity: 1; transform: none; }
+  }
+</style>
+
+<div class="shell">
+  <header class="rail reveal">
+    <div class="rail__name">Maxence<br>Crespel</div>
+    <div class="rail__role">Développeur full-stack<br>NestJS · React · Postgres</div>
+
+    <nav class="rail__nav" aria-label="Sections">
+      <a href="#sfeira">SFEIRA <span>01</span></a>
+      <a href="#ronchin">Ronchin US <span>02</span></a>
+      <a href="#carla">Carla Création <span>03</span></a>
+      <a href="#competences">Compétences <span>—</span></a>
+    </nav>
+
+    <div class="rail__foot">
+      Contact
+      <a href="mailto:maxence.crespel@yahoo.fr">maxence.crespel@yahoo.fr</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero reveal" aria-labelledby="hero-title">
+      <h1 id="hero-title">Je construis des applis web <em>de bout en bout.</em></h1>
+      <p>
+        De la modélisation de la base de données au déploiement continu. Trois
+        produits livrés et en service : une plateforme pour clubs de football,
+        une PWA pour mon équipe, un site de réservation pour un salon de coiffure.
+      </p>
+      <div class="hero__meta">
+        <div>Stack — <span>NestJS / TypeORM</span></div>
+        <div>Front — <span>React / Vite</span></div>
+        <div>Infra — <span>Docker / Kubernetes</span></div>
+      </div>
+    </section>
+
+    <section class="projects" id="projets" aria-labelledby="projets-title">
+      <h2 class="eyebrow" id="projets-title">Fiches projet</h2>
+
+      <article class="sheet reveal" id="sfeira">
+        <div class="sheet__head">
+          <h2 class="sheet__title">SFEIRA — Espace Coach</h2>
+          <div class="sheet__index">01 / Client</div>
+        </div>
+        <dl class="sheet__fields">
+          <div><dt>Rôle</dt><dd>Développement full-stack</dd></div>
+          <div><dt>Périmètre</dt><dd>Back · Front · BDD · Déploiement</dd></div>
+          <div><dt>Contexte</dt><dd>Clubs de football amateurs</dd></div>
+        </dl>
+        <div class="sheet__body">
+          <p>
+            Plateforme de gestion pour le staff technique : effectifs, groupes
+            d'entraînement, suivi de la charge (RPE), feuilles de match,
+            convocations, blessures et statistiques joueurs.
+          </p>
+          <p>
+            <strong>Import et lecture automatique des feuilles de match par IA</strong>
+            (extraction des événements, calcul des scores de performance), et
+            assistants IA pour l'analyse d'effectif et la génération de séances.
+            Pilotage de la migration Next.js → React/Vite et du CI/CD
+            multi-environnements (staging / production).
+          </p>
+        </div>
+        <div class="tags" aria-label="Technologies">
+          <span>NestJS</span><span>TypeORM</span><span>MySQL</span><span>MongoDB</span>
+          <span>React</span><span>Vite</span><span>Auth0</span><span>OpenAI</span>
+          <span>Docker</span><span>Kubernetes</span><span>ArgoCD</span>
+        </div>
+      </article>
+
+      <article class="sheet reveal" id="ronchin">
+        <div class="sheet__head">
+          <h2 class="sheet__title">Ronchin US</h2>
+          <div class="sheet__index">02 / Perso</div>
+        </div>
+        <dl class="sheet__fields">
+          <div><dt>Rôle</dt><dd>Conception &amp; réalisation seul</dd></div>
+          <div><dt>Type</dt><dd>PWA installable</dd></div>
+          <div><dt>Contexte</dt><dd>Mon équipe de foot — US Ronchin (D6)</dd></div>
+        </dl>
+        <div class="sheet__body">
+          <p>
+            Application pour la vie d'équipe : entraînements et présences,
+            calendrier des matchs, statistiques individuelles, et une couche de
+            <strong>gamification</strong> — badges et progression pour entretenir
+            l'assiduité. Synchronisation automatique du calendrier depuis le site
+            de la FFF (scraping headless).
+          </p>
+          <p>
+            Chaîne d'intégration complète : analyse de sécurité
+            (<strong>Gitleaks, Semgrep, Trivy, OWASP ZAP</strong>), tests E2E
+            Cypress, tests de charge, SBOM, et revue de pull request assistée par
+            IA — le tout avant déploiement automatique sur VPS.
+          </p>
+        </div>
+        <div class="tags" aria-label="Technologies">
+          <span>NestJS</span><span>TypeORM</span><span>PostgreSQL</span>
+          <span>React 19</span><span>Vite</span><span>PWA</span>
+          <span>Playwright</span><span>Docker</span><span>GitHub Actions</span>
+        </div>
+      </article>
+
+      <article class="sheet reveal" id="carla">
+        <div class="sheet__head">
+          <h2 class="sheet__title">Carla Création</h2>
+          <div class="sheet__index">03 / Client</div>
+        </div>
+        <dl class="sheet__fields">
+          <div><dt>Rôle</dt><dd>Développement full-stack</dd></div>
+          <div><dt>Type</dt><dd>Site vitrine + réservation</dd></div>
+          <div><dt>Contexte</dt><dd>Salon de coiffure &amp; ongles</dd></div>
+        </dl>
+        <div class="sheet__body">
+          <p>
+            Site complet pour un studio coiffure &amp; ongles : présentation,
+            galerie de réalisations, et <strong>prise de rendez-vous en ligne</strong>
+            avec choix de la catégorie de prestation. Espace administrateur pour
+            gérer réservations, créneaux, prestations et photos.
+          </p>
+          <p>
+            Front et back déployés comme une seule application : en production,
+            NestJS sert à la fois l'API et le build React sur un seul port —
+            migrations de base versionnées, uploads d'images, tests d'intégration
+            et E2E.
+          </p>
+        </div>
+        <div class="tags" aria-label="Technologies">
+          <span>React</span><span>NestJS</span><span>TypeORM</span>
+          <span>PostgreSQL</span><span>Multer</span><span>Cypress</span><span>Docker</span>
+        </div>
+      </article>
+    </section>
+
+    <section class="skills" id="competences" aria-labelledby="skills-title">
+      <h2 class="eyebrow" id="skills-title">Compétences</h2>
+
+      <div class="gauge">
+        <div class="gauge__label">Backend — NestJS / API</div>
+        <div class="gauge__score"><b>5</b> / 5</div>
+        <div class="gauge__track"><div class="gauge__fill" style="--v: 100%"></div></div>
+      </div>
+      <div class="gauge">
+        <div class="gauge__label">Frontend — React / Vite</div>
+        <div class="gauge__score"><b>4</b> / 5</div>
+        <div class="gauge__track"><div class="gauge__fill" style="--v: 80%"></div></div>
+      </div>
+      <div class="gauge">
+        <div class="gauge__label">Architecture &amp; bases de données</div>
+        <div class="gauge__score"><b>4</b> / 5</div>
+        <div class="gauge__track"><div class="gauge__fill" style="--v: 80%"></div></div>
+      </div>
+      <div class="gauge">
+        <div class="gauge__label">Intégration IA (LLM)</div>
+        <div class="gauge__score"><b>4</b> / 5</div>
+        <div class="gauge__track"><div class="gauge__fill" style="--v: 80%"></div></div>
+      </div>
+    </section>
+
+    <section class="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Parlons-en.</h2>
+      <a class="big" href="mailto:maxence.crespel@yahoo.fr">maxence.crespel@yahoo.fr</a>
+      <div class="note">Disponible — poste ou mission freelance</div>
+    </section>
+  </main>
+</div>
+
+<script>
+  (function () {
+    var els = document.querySelectorAll(".reveal");
+    if (!window.IntersectionObserver || matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      els.forEach(function (el) { el.classList.add("in"); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    els.forEach(function (el, i) {
+      el.style.transitionDelay = Math.min(i * 60, 240) + "ms";
+      io.observe(el);
+    });
+  })();
+</script>
