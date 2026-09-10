@@ -342,49 +342,35 @@
     mask: var(--i) center / contain no-repeat;
   }
 
-  /* ---------- skills ---------- */
+  /* ---------- stack ---------- */
 
-  .skills { padding-top: clamp(3.5rem, 8vw, 6rem); }
+  .stack { padding-top: clamp(3.5rem, 8vw, 6rem); }
 
-  .gauge {
+  .stack__group {
     display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: baseline;
-    gap: 0.4rem 1rem;
-    padding: 1.1rem 0;
-    border-bottom: 1px solid var(--line);
+    grid-template-columns: 1fr;
+    gap: 0.7rem 2rem;
+    padding: 1.4rem 0;
+    border-top: 1px solid var(--line);
   }
-  .gauge:first-of-type { border-top: 1px solid var(--line); }
+  .stack__group:last-of-type { border-bottom: 1px solid var(--line); }
 
-  .gauge__label {
-    font-family: var(--sans);
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: var(--step-1);
-    letter-spacing: 0.01em;
+  @media (min-width: 640px) {
+    .stack__group { grid-template-columns: 11rem 1fr; align-items: start; }
   }
-  .gauge__score {
+
+  .stack__group h3 {
     font-family: var(--mono);
+    font-weight: 500;
     font-size: var(--step--1);
+    text-transform: uppercase;
     letter-spacing: 0.06em;
-    color: var(--muted);
-    font-variant-numeric: tabular-nums;
+    color: var(--copper);
+    line-height: 1.5;
+    padding-top: 0.28rem;
   }
-  .gauge__score b { color: var(--copper); font-weight: 600; }
 
-  .gauge__track {
-    grid-column: 1 / -1;
-    height: 6px;
-    background: var(--line);
-    position: relative;
-    overflow: hidden;
-  }
-  .gauge__fill {
-    position: absolute;
-    inset: 0 auto 0 0;
-    width: var(--v);
-    background: var(--copper);
-  }
+  .stack__group .tags { margin-top: 0; }
 
   /* ---------- contact ---------- */
 
@@ -442,7 +428,7 @@
       <a href="#ronchin">Ronchin US <span>02</span></a>
       <a href="#carla">Carla Création <span>03</span></a>
       <a href="#eco121">ÉCO121 <span>04</span></a>
-      <a href="#competences">Compétences <span>—</span></a>
+      <a href="#technos">Technologies <span>—</span></a>
     </nav>
 
     <div class="rail__foot">
@@ -621,28 +607,58 @@
       </article>
     </section>
 
-    <section class="skills" id="competences" aria-labelledby="skills-title">
-      <h2 class="eyebrow" id="skills-title">Compétences</h2>
+    <section class="stack" id="technos" aria-labelledby="technos-title">
+      <h2 class="eyebrow" id="technos-title">Technologies pratiquées</h2>
 
-      <div class="gauge">
-        <div class="gauge__label">Backend — NestJS / API</div>
-        <div class="gauge__score"><b>4</b> / 5</div>
-        <div class="gauge__track"><div class="gauge__fill" style="--v: 80%"></div></div>
+      <div class="stack__group">
+        <h3>Back-end &amp; API</h3>
+        <div class="tags">
+          <span class="tag"><i style="--i:url(logos/nestjs.svg)"></i>NestJS</span>
+          <span class="tag"><i style="--i:url(logos/nodedotjs.svg)"></i>Node.js</span>
+          <span class="tag"><i style="--i:url(logos/typescript.svg)"></i>TypeScript</span>
+          <span class="tag"><i style="--i:url(logos/symfony.svg)"></i>Symfony</span>
+          <span class="tag"><i style="--i:url(logos/php.svg)"></i>PHP</span>
+          <span class="tag"><i style="--i:url(logos/auth0.svg)"></i>Auth0</span>
+          <span class="tag"><i style="--i:url(logos/openai.svg)"></i>OpenAI (API)</span>
+        </div>
       </div>
-      <div class="gauge">
-        <div class="gauge__label">Frontend — React / Vite</div>
-        <div class="gauge__score"><b>4</b> / 5</div>
-        <div class="gauge__track"><div class="gauge__fill" style="--v: 80%"></div></div>
+
+      <div class="stack__group">
+        <h3>Front-end</h3>
+        <div class="tags">
+          <span class="tag"><i style="--i:url(logos/react.svg)"></i>React</span>
+          <span class="tag"><i style="--i:url(logos/vite.svg)"></i>Vite</span>
+          <span class="tag"><i style="--i:url(logos/javascript.svg)"></i>JavaScript</span>
+          <span class="tag"><i style="--i:url(logos/html5.svg)"></i>HTML</span>
+          <span class="tag"><i style="--i:url(logos/css.svg)"></i>CSS</span>
+          <span class="tag">Twig</span>
+          <span class="tag">Smarty</span>
+          <span class="tag"><i style="--i:url(logos/pwa.svg)"></i>PWA</span>
+        </div>
       </div>
-      <div class="gauge">
-        <div class="gauge__label">Architecture &amp; bases de données</div>
-        <div class="gauge__score"><b>4</b> / 5</div>
-        <div class="gauge__track"><div class="gauge__fill" style="--v: 80%"></div></div>
+
+      <div class="stack__group">
+        <h3>Données &amp; CMS</h3>
+        <div class="tags">
+          <span class="tag"><i style="--i:url(logos/postgresql.svg)"></i>PostgreSQL</span>
+          <span class="tag"><i style="--i:url(logos/mysql.svg)"></i>MySQL</span>
+          <span class="tag"><i style="--i:url(logos/mongodb.svg)"></i>MongoDB</span>
+          <span class="tag"><i style="--i:url(logos/typeorm.svg)"></i>TypeORM</span>
+          <span class="tag"><i style="--i:url(logos/prestashop.svg)"></i>PrestaShop</span>
+          <span class="tag">Sulu</span>
+        </div>
       </div>
-      <div class="gauge">
-        <div class="gauge__label">Intégration IA (LLM)</div>
-        <div class="gauge__score"><b>4</b> / 5</div>
-        <div class="gauge__track"><div class="gauge__fill" style="--v: 80%"></div></div>
+
+      <div class="stack__group">
+        <h3>DevOps &amp; qualité</h3>
+        <div class="tags">
+          <span class="tag"><i style="--i:url(logos/docker.svg)"></i>Docker</span>
+          <span class="tag"><i style="--i:url(logos/kubernetes.svg)"></i>Kubernetes</span>
+          <span class="tag"><i style="--i:url(logos/argo.svg)"></i>ArgoCD</span>
+          <span class="tag"><i style="--i:url(logos/githubactions.svg)"></i>GitHub Actions</span>
+          <span class="tag"><i style="--i:url(logos/cypress.svg)"></i>Cypress</span>
+          <span class="tag"><i style="--i:url(logos/playwright.svg)"></i>Playwright</span>
+        </div>
       </div>
     </section>
 
